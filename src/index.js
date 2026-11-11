@@ -10,11 +10,19 @@ import ratingRoutes from './routes/rating.routes.js'
 const app = express();
 
 // 3. Definimos el puerto
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middlewares
+// app.use(cors({
+//     origin: 'http://localhost:5173'
+// }));
+const allowedOrigins = [
+  'http://localhost:5173',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-    origin: 'http://localhost:5173'
+  origin: allowedOrigins
 }));
 
 app.use(express.json());

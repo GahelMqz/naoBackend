@@ -67,6 +67,17 @@ app.get('/api/db-test', async (req, res) => {
 app.use('/api/ratings', ratingRoutes);
 
 // 5. Encendemos el servidor
-app.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+// app.listen(PORT, () => {
+//     console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+// });
+
+// Ruta principal
+app.get('/', (req, res) => {
+    res.json({
+        message: '¡Nuestro servidor está funcionando!'
+    });
+});
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor ejecutándose en el puerto ${PORT}`);
 });
